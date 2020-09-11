@@ -11,4 +11,10 @@
 
     <p><%= f.submit%></p>
 
+    <% if @note.errors.any? %>
+    <h2>Aht aht! Your note didn't save</h2>
+    <% @note.errors.full_messages.each do |error| %>
+        <%= message %>
+    <% end %> 
+
     <% end %> 
