@@ -1,4 +1,5 @@
 class NotesController < ApplicationController
+    
     def new 
         @note = Note.new
     end 
@@ -6,7 +7,11 @@ class NotesController < ApplicationController
     def create
         @note = Note.new(note_params)
         @note.save
-        redirect_to note_path(@note)
+        redirect_to '/notes/show'
+        byebug 
+    end 
+
+    def show   
     end 
 
     private 
