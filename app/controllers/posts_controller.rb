@@ -3,6 +3,7 @@ class PostsController < ApplicationController
     end 
 
     def about
+        #linktoabout
     end 
 
 end 
