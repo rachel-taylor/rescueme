@@ -1,0 +1,16 @@
+<h1>Who Are You</h1> 
+
+<%= form_for :user do |f| %>
+
+    <p>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+    </p>
+
+    <p><%= f.label :password %>
+    <%= f.text_field :password %>
+    </p>
+
+    <p><%= f.submit%></p>
+
+    <% end %> 
