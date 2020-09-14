@@ -45,7 +45,7 @@ class NotesController < ApplicationController
     private 
 
     def note_params
-
+        params.require(:user_id)
         params.require(:note).permit(:title, :description, :id)
         #userid params to link only to users notes 
     end 
