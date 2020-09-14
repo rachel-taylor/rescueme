@@ -17,34 +17,36 @@ class NotesController < ApplicationController
     end 
 
     def show  
-        @note = Note.find
+        @note = Note.find_by([params[:id]])
         #byebug
         #redirect_to '/notes/index'
     end 
 
-    def edit #button not rendering 
-        @note = Note.find
+    def edit 
+        @note = Note.find([params[:id]])
     end 
 
-    def update #button not rendering
-        @note = Note.find([params:id])
-        if @note.update(note.params)
-            redirect_to '/notes/show'
+    def update 
+        @note = Note.find_by([params[:id]])
+        if @note.update(note_params)
+            redirect_to '/notes'
         else 
-            redirect_to 'notes/edit/'
+            redirect_to '/notes/edit/'
         end 
     end 
 
-    def delete
-        @note = Note.find(params[:id])
-        @note.delete 
-        redirect_to 'notes/show'
+    def destroy 
+        #byebug
+        @note = Note.find_by([params[:id]])
+        @note.destroy
+        redirect_to '/notes'
     end 
 
     private 
 
     def note_params
-        params.require(:note).permit(:title, :description)
+
+        params.require(:note).permit(:title, :description, :id)
         #userid params to link only to users notes 
     end 
 end 
