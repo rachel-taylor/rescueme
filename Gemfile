@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.7'
  gem 'devise'
 gem 'bootstrap'
 gem 'jquery-rails'
-gem 'omniauth-facebook'
+gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
