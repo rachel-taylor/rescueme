@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
-  
-  devise_for :users
+
   resources :notes
- 
 
   root 'application#index'
-
-  get 'signup', to: 'users#new'
- 
+  
+  devise_for :users, :controllers => { users: 'registrations', users: 'sessions/sessions' }
+    
 end
