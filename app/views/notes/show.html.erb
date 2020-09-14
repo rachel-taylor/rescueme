@@ -6,3 +6,6 @@ Title: <% note.title %>
 <p>
 Description: <% note.description %>
 </p>
+
+<%= link_to 'Edit', edit_note_path(note) %>
+<%= link_to 'Delete', delete_note_path(note) %>
