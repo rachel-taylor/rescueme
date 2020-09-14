@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :notes
-  root 'posts#index'
 
-  get 'about', to: 'posts#about'
+  root 'application#index'
+ 
 end

@@ -1,11 +1,11 @@
 <h1>Check out Your notes</h1>
-#your should be name?
+
 <p>
-Title: <% note.title %>
+Title: <%= @note.title %>
 </p>
 <p>
-Description: <% note.description %>
+Description: <%= @note.description %>
 </p>
 
-<%= link_to 'Edit', edit_note_path(note) %>
-<%= link_to 'Delete', delete_note_path(note) %>
+<%= button_to 'Edit', edit_note_path(@note) %>
+<%= button_to 'Destroy', note_path(@note), data: {confirm: 'Are You Sure?'}, method: :delete %>
