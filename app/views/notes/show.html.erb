@@ -7,5 +7,5 @@ Title: <%= @note.title %>
 Description: <%= @note.description %>
 </p>
 
-<%= button_to 'Edit', edit_note_path(@note) %>
-<%= button_to 'Destroy', note_path(@note), data: {confirm: 'Are You Sure?'}, method: :delete %>
+<%= link_to 'Edit', edit_note_path(@note) %>
+<%= link_to 'Destroy', note_path(@note), data: {confirm: 'Are You Sure?'}, method: :delete %>

@@ -1,4 +1,4 @@
-<h1>Your Posts</h1>
+<h1>View Your Posts</h1>
 <p>
 <%= link_to 'New Post', new_note_path %>
 </p>
@@ -13,9 +13,8 @@
             <td><%= note.description %></td>
             <td><%= link_to 'Edit', edit_note_path(note) %></td>
             <td><%= link_to 'Show', note_path(note) %></td>
-            <td><%= link_to 'Destroy', note_path(@note), data: {confirm: 'Are You Sure?'}, method: :delete %></td>
+            <td><%= link_to 'Destroy', note_path(note), data: {confirm: 'Are You Sure?'}, method: :delete %></td>
         </tr>
     <% end %>
 </table> 
 
-<%= link_to 'Back', note_path(@note) %>
