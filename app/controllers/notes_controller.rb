@@ -11,19 +11,18 @@ class NotesController < ApplicationController
 
     def create
         @note = Note.new(note_params)
-        @note.save
+        @note.user = current_user
+        #byebug
+        @note.save!
         redirect_to '/notes'
-        
     end 
 
     def show  
         @note = Note.find_by([params[:id]])
-        #byebug
-        #redirect_to '/notes/index'
     end 
 
     def edit 
-        @note = Note.find([params[:id]])
+        @note = Note.find_by([params[:id]])
     end 
 
     def update 
@@ -36,17 +35,20 @@ class NotesController < ApplicationController
     end 
 
     def destroy 
-        #byebug
         @note = Note.find_by([params[:id]])
-        @note.destroy
+        @note.destroy 
         redirect_to '/notes'
     end 
 
     private 
 
     def note_params
-        #params.require(:user_id)
-        params.require(:note).permit(:title, :description, :id)
+        #params.require(:user)
+        params.require(:note).permit(:title, :description)
         #userid params to link only to users notes 
     end 
+
+    # def find_note
+    #   @note = Note.find(params[:id])  
+    # end 
 end 
