@@ -13,8 +13,9 @@
             <td><%= note.description %></td>
             <td><%= link_to 'Edit', edit_note_path(note) %></td>
             <td><%= link_to 'Show', note_path(note) %></td>
-            <td><%= link_to 'Destroy', note_path(note), data: {confirm: 'Are You Sure?'}, method: :delete %></td>
+           
         </tr>
     <% end %>
+    <p><%= link_to "Home", note_path(@note) %></p>
 </table> 
 

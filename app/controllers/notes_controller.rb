@@ -13,8 +13,11 @@ class NotesController < ApplicationController
         @note = Note.new(note_params)
         @note.user = current_user
         #byebug
-        @note.save!
-        redirect_to '/notes'
+        if @note.save
+            redirect_to '/notes'
+        else 
+            render 'new'
+        end 
     end 
 
     def show  
@@ -23,6 +26,11 @@ class NotesController < ApplicationController
 
     def edit 
         @note = Note.find_by([params[:id]])
+        unless session[:userid] == @note.user_id
+            flash[:notice] = "This is not your note to edit!"
+            redirect_to '/notes'
+            return
+        end 
     end 
 
     def update 
@@ -36,6 +44,11 @@ class NotesController < ApplicationController
 
     def destroy 
         @note = Note.find_by([params[:id]])
+        unless session[:userid] == @note.user_id
+            flash[:notice] = "This is not your note to delete!"
+            redirect_to '/notes'
+            return
+        end 
         @note.destroy 
         redirect_to '/notes'
     end 
@@ -51,4 +64,8 @@ class NotesController < ApplicationController
     # def find_note
     #   @note = Note.find(params[:id])  
     # end 
+
+    def user_owns_note
+        @note.user == current_user
+    end 
 end 
