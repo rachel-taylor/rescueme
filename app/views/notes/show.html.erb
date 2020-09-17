@@ -8,4 +8,4 @@ Description: <%= @note.description %>
 </p>
 
 <%= link_to 'Edit', edit_note_path(@note) %>
-<%= link_to 'Destroy', note_path(@note), data: {confirm: 'Are You Sure?'}, method: :delete %>
+<%= link_to 'Delete', note_path(@note), data: {confirm: 'Are You Sure?'}, method: :delete %>
