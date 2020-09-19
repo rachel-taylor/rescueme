@@ -1,0 +1,21 @@
+<h1>View Your Posts</h1>
+<p>
+<%= link_to 'New Post', new_comment_path %>
+</p>
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+    </tr>
+    <% @comment.each do |comment| %>
+        <tr>
+            <td><%= comment.title %></td>
+            <td><%= comment.description %></td>
+            <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+            <td><%= link_to 'Show', comment_path(comment) %></td>
+           
+        </tr>
+    <% end %>
+    
+</table> 
+

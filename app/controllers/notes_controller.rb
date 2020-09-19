@@ -2,7 +2,7 @@ class NotesController < ApplicationController
 
     def index
         @note = Note.all
-        #modview of all comments made
+        #modview of all notes made
     end 
 
     def new 
@@ -21,12 +21,16 @@ class NotesController < ApplicationController
     end 
 
     def show  
-        @note = Note.find_by([params[:id]])
+        # byebug
+        @note = Note.find_by(id: params[:id])
+        @comment = Comment.new
+        @comment.note_id = @note.id
     end 
 
     def edit 
         @note = Note.find_by([params[:id]])
-        unless session[:userid] == @note.user_id
+        # byebug
+        unless current_user.id == @note.user_id
             flash[:notice] = "This is not your note to edit!"
             redirect_to '/notes'
             return
@@ -44,7 +48,7 @@ class NotesController < ApplicationController
 
     def destroy 
         @note = Note.find_by([params[:id]])
-        unless session[:userid] == @note.user_id
+        unless current_user.id == @note.user_id
             flash[:notice] = "This is not your note to delete!"
             redirect_to '/notes'
             return
@@ -56,14 +60,10 @@ class NotesController < ApplicationController
     private 
 
     def note_params
-        #params.require(:user)
-        params.require(:note).permit(:title, :description)
+        # params.require(:user)
+        params.require(:note).permit(:title, :description, :comment)
         #userid params to link only to users notes 
     end 
-
-    # def find_note
-    #   @note = Note.find(params[:id])  
-    # end 
 
     def user_owns_note
         @note.user == current_user

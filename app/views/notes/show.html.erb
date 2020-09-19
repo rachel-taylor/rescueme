@@ -7,5 +7,12 @@ Title: <%= @note.title %>
 Description: <%= @note.description %>
 </p>
 
-<%= link_to 'Edit', edit_note_path(@note) %>
-<%= link_to 'Delete', note_path(@note), data: {confirm: 'Are You Sure?'}, method: :delete %>
+<%= link_to 'Edit', edit_note_path(@note) %> 
+<%= link_to 'Delete', note_path(@note), data: {confirm: 'Are You Sure?'}, method: :delete %> 
+
+<h4>Comments</h4>
+<%= render partial: 'notes/comment', collection: @note.comments.reverse %>
+
+<%= render partial: 'comments/form' %>
+
+
