@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+RescueMe is a National Disaster Recovery help to assist those in need. 
 
-Things you may want to cover:
+Installation
 
-* Ruby version
+ Please run 'Bundle Install' 
 
-* System dependencies
+Usage
 
-* Configuration
+Contributing 
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
