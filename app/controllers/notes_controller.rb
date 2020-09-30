@@ -1,8 +1,7 @@
 class NotesController < ApplicationController
 
     def index
-        @note = Note.all
-        #modview of all notes made
+        @note = Note.for_user(current_user).order(id: :desc)
     end 
 
     def new 
@@ -12,7 +11,6 @@ class NotesController < ApplicationController
     def create
         @note = Note.new(note_params)
         @note.user = current_user
-        #byebug
         if @note.save
             redirect_to '/notes'
         else 
@@ -21,9 +19,10 @@ class NotesController < ApplicationController
     end 
 
     def show  
-        # byebug
+        #  byebug
         @note = Note.find_by(id: params[:id])
         @comment = Comment.new
+        #byebug
         @comment.note_id = @note.id
     end 
 

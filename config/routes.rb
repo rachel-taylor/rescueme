@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   resources :user
   resources :notes do
-    resources :comments 
+    resources :comments
   end 
   
 

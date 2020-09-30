@@ -1,22 +1,31 @@
 class CommentsController < ApplicationController 
     def index
         @comment = Comment.all
-        #modview of all comments made
+        
     end 
 
     def new 
         @comment = Comment.new
+        @comment.note = Note.find_by(id: params[:note_id])
+        @note = @comment.note
     end 
 
     def create
-        @comment = Comment.new(comment_params)
+        @note = Note.find_by(params[:note])
+        @comment = @note.comments.new(comment_params)
         @comment.user = current_user
-        #byebug
-        if @comment.save
-            redirect_to '/comments'
-        else 
-            render 'new'
+        # @comment.valid? 
+        if !@comment.valid?
+            flash[:alert] = @comment.errors.details[:description].join ','
+           render :new
+           return   
         end 
+    if @comment.save!
+        # byebug
+            flash[:success] = "Comment Posted!"
+            # redirect_back(fallback_location: root_path)
+           redirect_to "/notes/#{@note.id}"
+         end 
     end 
 
     def show  
@@ -58,8 +67,9 @@ class CommentsController < ApplicationController
 
     def comment_params
         # params.require(:user)
-        params.require(:comment).permit(:title, :description)
+        params.require(:comment).permit(:description, :note_id)
         #userid params to link only to users comments 
     end 
 
+   
 end 

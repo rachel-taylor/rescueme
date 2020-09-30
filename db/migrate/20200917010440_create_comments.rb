@@ -3,8 +3,9 @@ class CreateComments < ActiveRecord::Migration[6.0]
     create_table :comments do |t|
       t.string :name
       t.text :description
-
-      t.timestamps
+      t.belongs_to :user
+      t.belongs_to :note
+      t.timestamps null:false
     end
   end
 end

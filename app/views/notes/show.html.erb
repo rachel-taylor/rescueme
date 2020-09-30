@@ -10,7 +10,7 @@ Description: <%= @note.description %>
 <%= link_to 'Edit', edit_note_path(@note) %> 
 <%= link_to 'Delete', note_path(@note), data: {confirm: 'Are You Sure?'}, method: :delete %> 
 
-<h4>Comments</h4>
+<h2>Comments</h2>
 <%= render partial: 'notes/comment', collection: @note.comments.reverse %>
 
 <%= render partial: 'comments/form' %>

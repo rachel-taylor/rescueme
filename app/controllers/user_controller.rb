@@ -8,7 +8,6 @@ class UserController < ApplicationController
 
     def create
         @User = User.new
-        #byebug
         @user.save
     end 
 
@@ -17,5 +16,9 @@ class UserController < ApplicationController
     end 
 
     def edit
+    end 
+
+    def logged_in_user 
+   
     end 
 end 
